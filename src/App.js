@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import Customer from './Customer/Customer';
 
-function App() {
+class App extends Component {
+  state = {
+    customers : [
+      {name: 'Max', wallet: '320'},
+      {name: 'Mathew', wallet: '350'},
+      {name: 'Morgan', wallet: '420'}
+    ]
+    
+  };
+
+  render(){
   return (
     <div className="App">
-      <h1 className="color-red">Hola!  The react App..</h1>
+      <h1 className="color-red">Hola!  The react App..</h1>            
       <p className="color-green">This is a paragraph here...</p>
-      <Customer num="1" wallet="320"/>     
-      <Customer num="2" wallet="350"/>  
-      <Customer num="3" wallet="420">Choses à acheter
+      <Customer num={this.state.customers[0].name} wallet={this.state.customers[0].wallet}/>     
+      <Customer num={this.state.customers[1].name} wallet={this.state.customers[1].wallet}/>  
+      <Customer num={this.state.customers[2].name} wallet={this.state.customers[2].wallet}>Choses à acheter
         <ul>
           <li>Le Chocolat</li>
           <li>Le pain avec du buerre</li>
@@ -19,6 +29,7 @@ function App() {
       <Customer num="4" wallet="280"/>  
     </div>
   );
+}
 }
 
 export default App;
