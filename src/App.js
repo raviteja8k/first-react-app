@@ -10,7 +10,12 @@ function App() {
       <p className="color-green">This is a paragraph here...</p>
       <Customer num="1" wallet="320"/>     
       <Customer num="2" wallet="350"/>  
-      <Customer num="3" wallet="420"/>  
+      <Customer num="3" wallet="420">Choses à acheter
+        <ul>
+          <li>Le Chocolat</li>
+          <li>Le pain avec du buerre</li>
+        </ul>
+      </Customer>
       <Customer num="4" wallet="280"/>  
     </div>
   );
