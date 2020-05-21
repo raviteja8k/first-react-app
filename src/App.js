@@ -13,6 +13,10 @@ class App extends Component {
     
   };
 
+  onButtonClick = () => {
+    console.log("Button Clicked!");
+  }
+
   render(){
   return (
     <div className="App">
@@ -26,7 +30,7 @@ class App extends Component {
           <li>Le pain avec du buerre</li>
         </ul>
       </Customer>
-      <Customer num="4" wallet="280"/>  
+      <button onClick={this.onButtonClick}>Click Me!</button>
     </div>
   );
 }
