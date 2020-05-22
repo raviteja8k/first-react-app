@@ -17,14 +17,14 @@ class App extends Component {
   }
 
   render(){   
-    const headdStyle = {
+    const headStyle = {
       fontSize: '20px',
       color: 'green'
     }
 
   return (
     <div className="App">
-      <h1 >The UserInput/UserOutput React App</h1>
+      <h1 style={headStyle}>The UserInput/UserOutput React App</h1>
       <UserInput changeInput={this.changeUsername} userName={this.state.userName}/>
       <UserOutput  userName={this.state.userName}>Dynamic Username:</UserOutput>
       <UserOutput  userName={'raspberry97'} />
