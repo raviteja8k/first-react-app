@@ -35,6 +35,13 @@ inputAdded = (event) => {
 }
 
   render(){
+  
+    const buttonStyle= {
+    border: '1px solid blue',
+    color: 'green',
+    padding:'10px'
+  }
+
   return (
     <div className="App">
       <h1 className="color-red">Hola!  The react App..</h1>            
@@ -56,7 +63,7 @@ inputAdded = (event) => {
           <li>Le pain avec du buerre</li>
         </ul>
       </Customer>
-      <button onClick={this.onButtonClick.bind(this, '200', 'Charlotte')}>Click Me!</button>
+      <button style={buttonStyle} onClick={this.onButtonClick.bind(this, '200', 'Charlotte')}>Click Me!</button>
     </div>
   );
 }
