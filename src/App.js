@@ -13,11 +13,11 @@ class App extends Component {
     
   };
 
-  onButtonClick = () => {
+  onButtonClick = (newWalletValue) => {
     //console.log("Button click!");
     this.setState({
       customers : [
-        {name: 'Minotaur', wallet: '520'},  
+        {name: 'Minotaur', wallet: newWalletValue},  
         {name: 'Mathew', wallet: '350'},     
         {name: 'Morgan', wallet: '420'}
       ]
@@ -35,7 +35,7 @@ class App extends Component {
       <Customer 
       num={this.state.customers[1].name} 
       wallet={this.state.customers[1].wallet} 
-      click={this.onButtonClick}/>  
+      click={this.onButtonClick.bind(this, '800')}/>  
       <Customer 
       num={this.state.customers[2].name} 
       wallet={this.state.customers[2].wallet}>
@@ -45,7 +45,7 @@ class App extends Component {
           <li>Le pain avec du buerre</li>
         </ul>
       </Customer>
-      <button onClick={this.onButtonClick}>Click Me!</button>
+      <button onClick={this.onButtonClick.bind(this, '200')}>Click Me!</button>
     </div>
   );
 }
