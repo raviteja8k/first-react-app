@@ -9,12 +9,20 @@ class App extends Component {
       {name: 'Max', wallet: '320'},
       {name: 'Mathew', wallet: '350'},
       {name: 'Morgan', wallet: '420'}
-    ]
+    ],
+    newState: 'other state for testing'
     
   };
 
   onButtonClick = () => {
-    console.log("Button Clicked!");
+    //console.log("Button click!");
+    this.setState({
+      customers : [
+        {name: 'Minotaur', wallet: '520'},
+        {name: 'Mathew', wallet: '350'},
+        {name: 'Morgan', wallet: '420'}
+      ]
+    })
   }
 
   render(){
@@ -31,6 +39,7 @@ class App extends Component {
         </ul>
       </Customer>
       <button onClick={this.onButtonClick}>Click Me!</button>
+      <p>{this.state.newState}</p>
     </div>
   );
 }
