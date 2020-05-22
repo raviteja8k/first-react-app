@@ -1,0 +1,9 @@
+.cardStyle {
+    display: inline-block;
+    width: 40%;
+    min-Width: 200px;
+    border: 1px solid #eee;
+    padding: 10px;
+    margin:5px;
+    box-shadow: 0 2px 3px #ccc;
+  }
