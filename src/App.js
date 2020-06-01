@@ -5,10 +5,10 @@ import UserOutput from './UserOutput/UserOutput';
 class App extends Component {
   state = {
     customers : [
-    {name: 'Moses', wallet: '280'},  
-    {name: 'Mathew', wallet: '350'},     
-    {name: 'Morgan', wallet: '420'},
-    {name: 'Megan', wallet: '370'}],
+    {id: 'asd44', name: 'Moses', wallet: '280'},  
+    {id: 'er44', name: 'Mathew', wallet: '350'},     
+    {id: 'aers44', name: 'Morgan', wallet: '420'},
+    {id: 'jklj4k4', name: 'Megan', wallet: '370'}],
     showDisplay: false
   }
 
@@ -22,7 +22,7 @@ class App extends Component {
   deleteCustomer = (indexKey) => {
     const iCustomers = [...this.state.customers];
     iCustomers.splice(indexKey, 1);
-    console.log(iCustomers);
+   // console.log(iCustomers);
     this.setState({customers: iCustomers});
   };
 
@@ -39,7 +39,7 @@ class App extends Component {
    <div>
      {
        this.state.customers.map((customer, customerKey) => 
-        <UserOutput key={customerKey} click={() => this.deleteCustomer(customerKey)} cname={customer.name} cwallet={customer.wallet}/>
+        <UserOutput key={customer.id} click={() => this.deleteCustomer(customerKey)} cname={customer.name} cwallet={customer.wallet}/>
        )}
     </div>
    );
