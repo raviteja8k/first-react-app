@@ -19,6 +19,13 @@ class App extends Component {
     this.setState({showDisplay: !display});
   }
 
+  deleteCustomer = (indexKey) => {
+    const iCustomers = [...this.state.customers];
+    iCustomers.splice(indexKey, 1);
+    console.log(iCustomers);
+    this.setState({customers: iCustomers});
+  };
+
   render(){   
     const headStyle = {
       fontSize: '20px',
@@ -32,7 +39,7 @@ class App extends Component {
    <div>
      {
        this.state.customers.map((customer, customerKey) => 
-        <UserOutput key={customerKey} cname={customer.name} cwallet={customer.wallet}/>
+        <UserOutput key={customerKey} click={() => this.deleteCustomer(customerKey)} cname={customer.name} cwallet={customer.wallet}/>
        )}
     </div>
    );
