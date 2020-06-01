@@ -10,18 +10,7 @@ class App extends Component {
     showDisplay: false
   }
 
-  changeUsername = (event) =>{
-    this.setState ({
-      userName: event.target.value
-    }
-    );
-  }
-
-  clickHandler = (props) => {
-    this.setState({
-      userName: props
-    });
-  }
+ 
 
   toggleDisplay = () => {
     const display = this.state.showDisplay;
@@ -38,9 +27,6 @@ class App extends Component {
   if( this.state.showDisplay )
   persons = (
     <div>
-    <UserInput changeInput={this.changeUsername} defuserName={this.state.userName}/>
-    <UserOutput  userName={this.state.userName}>Dynamic Username:</UserOutput>
-    <UserOutput  userName={this.state.userName} click={this.clickHandler.bind(this,'raspberry978')}/>
     <UserOutput  userName={'copenhaggen4'}/>    
     <UserOutput  userName={'tutenkhamen8'}/>  
   </div> );
