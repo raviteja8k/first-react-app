@@ -34,22 +34,23 @@ class App extends Component {
       color: 'green'
     }
 
-  const persons = (<UserOutput  userName={'runaround77'}>Children: </UserOutput>);
+  let persons = null;
+  if( this.state.showDisplay )
+  persons = (
+    <div>
+    <UserInput changeInput={this.changeUsername} defuserName={this.state.userName}/>
+    <UserOutput  userName={this.state.userName}>Dynamic Username:</UserOutput>
+    <UserOutput  userName={this.state.userName} click={this.clickHandler.bind(this,'raspberry978')}/>
+    <UserOutput  userName={'copenhaggen4'}/>    
+    <UserOutput  userName={'tutenkhamen8'}/>  
+  </div> );
 
   return (
     <div className="App">
       <h1 style={headStyle}>The UserInput/UserOutput React App</h1>
       <button onClick={this.toggleDisplay}>Toggle Display</button>
-      { this.state.showDisplay ?
-        <div>
-        <UserInput changeInput={this.changeUsername} defuserName={this.state.userName}/>
-        <UserOutput  userName={this.state.userName}>Dynamic Username:</UserOutput>
-        <UserOutput  userName={this.state.userName} click={this.clickHandler.bind(this,'raspberry978')}/>
-        <UserOutput  userName={'copenhaggen4'}/>
-        
-        {persons}
-        </div> : null
-      }
+     
+      {persons}
     </div>
   );
 }
