@@ -6,7 +6,9 @@ import UserOutput from './UserOutput/UserOutput';
 
 class App extends Component {
   state = {
-    userName: 'rabadaman45',
+    {name: 'Moses', wallet: '280'},  
+    {name: 'Mathew', wallet: '350'},     
+    {name: 'Morgan', wallet: '420'},
     showDisplay: false
   }
 
@@ -27,8 +29,8 @@ class App extends Component {
   if( this.state.showDisplay )
   persons = (
     <div>
-    <UserOutput  userName={'copenhaggen4'}/>    
-    <UserOutput  userName={'tutenkhamen8'}/>  
+    <UserOutput  name={this.state.name[0]}/>    
+    <UserOutput  name={'tutenkhamen8'}/>  
   </div> );
 
   return (
