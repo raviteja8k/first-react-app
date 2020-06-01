@@ -34,6 +34,8 @@ class App extends Component {
       color: 'green'
     }
 
+  const persons = (<UserOutput  userName={'runaround77'}>Children: </UserOutput>);
+
   return (
     <div className="App">
       <h1 style={headStyle}>The UserInput/UserOutput React App</h1>
@@ -44,7 +46,8 @@ class App extends Component {
         <UserOutput  userName={this.state.userName}>Dynamic Username:</UserOutput>
         <UserOutput  userName={this.state.userName} click={this.clickHandler.bind(this,'raspberry978')}/>
         <UserOutput  userName={'copenhaggen4'}/>
-        <UserOutput  userName={'runaround77'}/>
+        
+        {persons}
         </div> : null
       }
     </div>
