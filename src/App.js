@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-//import Customer from './Customer/Customer';
-import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
 
 class App extends Component {
   state = {
+    customers : [
     {name: 'Moses', wallet: '280'},  
     {name: 'Mathew', wallet: '350'},     
     {name: 'Morgan', wallet: '420'},
+    {name: 'Megan', wallet: '370'}],
     showDisplay: false
   }
 
@@ -26,18 +26,21 @@ class App extends Component {
     }
 
   let persons = null;
+  
   if( this.state.showDisplay )
   persons = (
-    <div>
-    <UserOutput  name={this.state.name[0]}/>    
-    <UserOutput  name={'tutenkhamen8'}/>  
-  </div> );
+   <div>
+     {
+       this.state.customers.map(customer => 
+        <UserOutput cname={customer.name} cwallet={customer.wallet}/>
+       )}
+    </div>
+   );
 
   return (
     <div className="App">
       <h1 style={headStyle}>The UserInput/UserOutput React App</h1>
       <button onClick={this.toggleDisplay}>Toggle Display</button>
-     
       {persons}
     </div>
   );
