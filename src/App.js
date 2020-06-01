@@ -31,8 +31,8 @@ class App extends Component {
   persons = (
    <div>
      {
-       this.state.customers.map(customer => 
-        <UserOutput cname={customer.name} cwallet={customer.wallet}/>
+       this.state.customers.map((customer, customerKey) => 
+        <UserOutput key={customerKey} cname={customer.name} cwallet={customer.wallet}/>
        )}
     </div>
    );
