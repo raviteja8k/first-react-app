@@ -15,14 +15,15 @@ class App extends Component {
     const newString = event.target.value;
     const newSplitString = newString.split('');
     const newStringLength= event.target.value.length;
-    this.setState({string: newString,splitString: newSplitString, stringLength: newStringLength});
+    this.setState({string: newString, splitString: newSplitString, stringLength: newStringLength});
   }
  
   deleteChar = (index) => {
     const delString = [...this.state.splitString];
-    const newdelString = delString.splice(index, 1);
-
-    this.setState({splitString: newdelString});
+    delString.splice(index, 1);
+    const newStrLength = delString.length;
+    const joinString = delString.join('');
+    this.setState({splitString: delString, string: joinString, stringLength: newStrLength});
   }
 
   render(){   
@@ -30,7 +31,7 @@ class App extends Component {
   return (
     <div className="App">
       <h1>Voici ma 'The String App'</h1>
-      <input onChange={(event) => this.lengthFinder(event)} />  
+      <input onChange={(event) => this.lengthFinder(event)} value={this.state.string}/>  
       <p>The length of the string is {this.state.stringLength}</p>
       <Validation strlen={this.state.stringLength}/>
      {(this.state.string.length>=1)? 
