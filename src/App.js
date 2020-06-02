@@ -26,6 +26,30 @@ class App extends Component {
     this.setState({customers: iCustomers});
   };
 
+  changeCustomername = (event, id) => {
+    // new array to update state
+    const newCustomers = [...this.state.customers];
+
+    // first find respective index of the customer
+    const customerIndex = 
+          this.state.customers.findIndex(p => {
+          return p.id === id;      
+        });
+    
+    // replace customer at that index to new customer
+    const newCustomer = {...this.state.customers[customerIndex]};
+    //change name of that customer to input typed
+    newCustomer.name = event.target.value;
+    
+    //adding new customer name 
+    newCustomers[customerIndex] = newCustomer;
+    
+    this.setState({
+      customers: newCustomers
+    });
+
+  };
+
   render(){   
     const headStyle = {
       fontSize: '20px',
@@ -39,7 +63,11 @@ class App extends Component {
    <div>
      {
        this.state.customers.map((customer, customerKey) => 
-        <UserOutput key={customer.id} click={() => this.deleteCustomer(customerKey)} cname={customer.name} cwallet={customer.wallet}/>
+        <UserOutput key={customer.id} 
+                    change={(event) => this.changeCustomername(event, customer.id)} 
+                    click={() => this.deleteCustomer(customerKey)} 
+                    cname={customer.name} 
+                    cwallet={customer.wallet}/>
        )}
     </div>
    );
