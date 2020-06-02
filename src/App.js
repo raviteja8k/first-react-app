@@ -1,69 +1,44 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import Customer from './Customer/Customer';
+import Validation from './Validation/Validation';
+import Char from './Char/Char';
 
 class App extends Component {
   state = {
-    customers : [
-      {name: 'Max', wallet: '320'},
-      {name: 'Mathew', wallet: '350'},
-      {name: 'Morgan', wallet: '420'}
-    ]
-    
+    string: '',
+    splitString: [],
+    stringLength : 0
   };
 
-  onButtonClick = (newWalletValue, newName) => {
-    //console.log("Button click!");
-    this.setState({
-      customers : [
-        {name: newName, wallet: newWalletValue},  
-        {name: 'Mathew', wallet: '350'},     
-        {name: 'Morgan', wallet: '420'}
-      ]
-    })
+  lengthFinder = (event) => {
+    const newString = event.target.value;
+    const newSplitString = newString.split('');
+    const newStringLength= event.target.value.length;
+    this.setState({string: newString,splitString: newSplitString, stringLength: newStringLength});
+  }
+ 
+  deleteChar = (index) => {
+    const delString = [...this.state.splitString];
+    const newdelString = delString.splice(index, 1);
+
+    this.setState({splitString: newdelString});
   }
 
-inputAdded = (event) => {
-  this.setState({
-    customers: [
-      {name: 'Max', wallet: '320'},
-      {name: event.target.value, wallet: '350'},     
-      {name: 'Morgan', wallet: '420'}
-    ]
-  })
-}
-
-  render(){
-  
-    const buttonStyle= {
-    border: '1px solid blue',
-    color: 'green',
-    padding:'10px'
-  }
+  render(){   
 
   return (
     <div className="App">
-      <h1 className="color-red">Hola!  The react App..</h1>            
-      <p className="color-green">This is a paragraph here...</p>
-      <Customer 
-      num={this.state.customers[0].name} 
-      wallet={this.state.customers[0].wallet}/>     
-      <Customer 
-      num={this.state.customers[1].name} 
-      wallet={this.state.customers[1].wallet} 
-      click={this.onButtonClick.bind(this, '800', 'Goblin')} 
-      inputTyped={this.inputAdded}/>  
-      <Customer 
-      num={this.state.customers[2].name} 
-      wallet={this.state.customers[2].wallet}>
-        Choses à acheter
-        <ul>
-          <li>Le Chocolat</li>
-          <li>Le pain avec du buerre</li>
-        </ul>
-      </Customer>
-      <button style={buttonStyle} onClick={this.onButtonClick.bind(this, '200', 'Charlotte')}>Click Me!</button>
+      <h1>Voici ma 'The String App'</h1>
+      <input onChange={(event) => this.lengthFinder(event)} />  
+      <p>The length of the string is {this.state.stringLength}</p>
+      <Validation strlen={this.state.stringLength}/>
+     {(this.state.string.length>=1)? 
+      this.state.splitString.map((str,id) => 
+      <Char displayString={str} 
+            key={id} 
+            clicked={() => this.deleteChar(id)}/>)
+    : null}
     </div>
   );
 }
