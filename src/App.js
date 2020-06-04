@@ -56,9 +56,15 @@ class App extends Component {
       color: 'green'
     }
 
+    const buttonStyle = {
+      backgroundColor: '#fff',
+      padding: '10px',
+      color: '#333'
+    }
+
   let persons = null;
   
-  if( this.state.showDisplay )
+  if( this.state.showDisplay ){
   persons = (
    <div>
      {
@@ -68,14 +74,19 @@ class App extends Component {
                     click={() => this.deleteCustomer(customerKey)} 
                     cname={customer.name} 
                     cwallet={customer.wallet}/>
-       )}
+       )
+       
+       }
     </div>
    );
+   buttonStyle.backgroundColor= 'green';    
+   buttonStyle.color= '#fff';
+  } 
 
   return (
     <div className="App">
       <h1 style={headStyle}>The UserInput/UserOutput React App</h1>
-      <button onClick={this.toggleDisplay}>Toggle Display</button>
+      <button style={buttonStyle} onClick={this.toggleDisplay}>Toggle Display</button>
       {persons}
     </div>
   );
