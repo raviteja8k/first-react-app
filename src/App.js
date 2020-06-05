@@ -66,7 +66,7 @@ class App extends Component {
 
     //Code to change para color based on elements
     const classes = [];
-    if(this.state.customers.length<=4) { classes.push('redFont'); }
+    if(this.state.customers.length<=5) { classes.push('redFont'); }
     if(this.state.customers.length<=3) {classes.push('bold');}
 
     //Code to toggle display of elements
