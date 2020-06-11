@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import UserOutput from './UserOutput/UserOutput';
+import Persons from './UserOutput/Persons';
+import persons from './UserOutput/Persons';
 
 class App extends Component {
   state = {
@@ -70,23 +71,17 @@ class App extends Component {
     if(this.state.customers.length<=3) {classes.push('bold');}
 
     //Code to toggle display of elements
-  let persons = null;
+    let persons = null;
   
-  if( this.state.showDisplay ){
-  persons = (
-   <div>
-     <p className={classes.join(' ')} style={{color: 'green'}}>This para's style changes based on number of elements below.</p>
-     {
-       this.state.customers.map((customer, customerKey) => 
-        <UserOutput key={customer.id} 
-                    change={(event) => this.changeCustomername(event, customer.id)} 
-                    click={() => this.deleteCustomer(customerKey)} 
-                    cname={customer.name} 
-                    cwallet={customer.wallet}/>
-       )
-       
-       }
-    </div>
+  if( this.state.showDisplay ){ 
+    persons = (
+       <div>
+       <p className={classes.join(' ')} 
+          style={{color: 'green'}}>This para's style changes based on number of elements below.</p>
+       <Persons customers={this.state.customers} 
+                change={this.changeCustomername} 
+                delete={this.deleteCustomer}  />     
+     </div>
    );
    buttonStyle.backgroundColor= 'green';    
    buttonStyle.color= '#fff';
@@ -96,7 +91,7 @@ class App extends Component {
     <div className="App">
       <h1 style={headStyle}>The UserInput/UserOutput React App</h1>      
       <button style={buttonStyle} onClick={this.toggleDisplay}>Toggle Display</button>
-      {persons}
+     {persons}      
     </div>
   );
 }
